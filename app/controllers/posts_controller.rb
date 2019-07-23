@@ -1,10 +1,11 @@
-class PostsController < ApplicationController
+# frozen_string_literal: true
 
+class PostsController < ApplicationController
   # http_basic_authenticate_with name: 'admin', password: '123',
   #                              exept: [:index, :show]
 
   def index
-  @posts = Post.all
+    @posts = Post.all
   end
 
   def show
@@ -16,13 +17,13 @@ class PostsController < ApplicationController
   end
 
   def new
-  @post = Post.new
+    @post = Post.new
   end
 
   def update
     @post = Post.find(params[:id])
 
-    if(@post.update(post_params))
+    if @post.update(post_params)
       redirect_to @post
 
     else
@@ -40,11 +41,11 @@ class PostsController < ApplicationController
     # render plain: params[:post].inspect
     @post = Post.new(post_params)
 
-    if(@post.save)
-    redirect_to @post
+    if @post.save
+      redirect_to @post
 
-  else
-    render 'new'
+    else
+      render 'new'
   end
   end
 
